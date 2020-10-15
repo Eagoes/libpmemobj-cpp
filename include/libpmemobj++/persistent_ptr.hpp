@@ -530,6 +530,19 @@ public:
 	 */
 	using pointer = persistent_ptr<T>;
 
+	/**
+	 * The virtual memory space pointer type
+	 */
+	using vpointer_type = T*;
+
+	/**
+	 * virtual memory space pointer conversion operator.
+	 */
+	operator vpointer_type()
+	{
+		return this->get();
+	}
+
 protected:
 	/**
 	 * Verify if element_type is not polymorphic

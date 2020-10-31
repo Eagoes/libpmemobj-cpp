@@ -361,16 +361,10 @@ public:
 	 * Converting assignment operator from a different
 	 * persistent_ptr<>.
 	 *
-	 * Available only for convertible types.
-	 * Just like regular assignment, also automatically registers
-	 * itself in a transaction.
-	 *
 	 * @throw pmem::transaction_error when adding the object
 	 * to the transaction failed.
 	 */
-	template <typename Y,
-		  typename = typename std::enable_if<
-			  std::is_convertible<Y *, T *>::value>::type>
+	template <typename Y>
 	persistent_ptr<T> &
 	operator=(persistent_ptr<Y> const &r)
 	{
